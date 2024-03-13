@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.AccessibleObject;
 import java.util.Date;
 
+/**
+ * 支持已有的用户名/密码登录功能
+ */
 @Component
-public class RegisterLoginByDefault extends AbstractRegisterLoginFunc implements RegisterLoginFuncInterface {
+public class RegisterLoginByDefault extends AbstractRegisterLoginFunc{
 
     @Autowired
     private UserRepository userRepository;

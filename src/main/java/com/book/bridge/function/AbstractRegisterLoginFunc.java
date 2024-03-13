@@ -33,18 +33,22 @@ public abstract class AbstractRegisterLoginFunc implements RegisterLoginFuncInte
         return true;
     }
 
+    @Override
     public String login(String account, String password) {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public String register(UserInfo userInfo){
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public boolean checkUserExists(String userName){
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public String login3rd(HttpServletRequest request) {
         throw new UnsupportedOperationException();
     }

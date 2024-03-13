@@ -15,8 +15,11 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
+/**
+ * 支持Gitee第三方账号登录功能
+ */
 @Component
-public class RegisterLoginByGitee extends AbstractRegisterLoginFunc implements RegisterLoginFuncInterface {
+public class RegisterLoginByGitee extends AbstractRegisterLoginFunc{
     @Value("${gitee.state}")
     private String giteeState;
     @Value("${gitee.token.url}")

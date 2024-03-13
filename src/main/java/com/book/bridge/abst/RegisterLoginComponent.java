@@ -7,12 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 
 public class RegisterLoginComponent extends AbstractRegisterLoginComponent{
 
+    // 通过构造函数,传入"桥梁"RegisterLoginFuncInterface的具体类型
     public RegisterLoginComponent(RegisterLoginFuncInterface funcInterface) {
         super(funcInterface);
     }
 
     @Override
     public String login(String username, String password) {
+        // 直接通过桥梁,调用具体实现类的方法
         return funcInterface.login(username, password);
     }
 

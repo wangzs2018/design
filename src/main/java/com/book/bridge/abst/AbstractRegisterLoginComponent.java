@@ -6,6 +6,7 @@ import com.book.pojo.UserInfo;
 import javax.servlet.http.HttpServletRequest;
 
 public abstract class AbstractRegisterLoginComponent {
+    // 面向接口编程,引入RegisterLoginFuncInterface接口属性,此处为"桥"之所在
     protected RegisterLoginFuncInterface funcInterface;
 
     public AbstractRegisterLoginComponent(RegisterLoginFuncInterface funcInterface) {
