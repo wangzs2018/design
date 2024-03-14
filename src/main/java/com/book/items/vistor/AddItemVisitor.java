@@ -6,6 +6,9 @@ import com.book.utils.RedisCommonProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * 商品类目添加访问者
+ */
 @Component
 public class AddItemVisitor implements ItemVisitor<AbstractProductItem>{
     @Autowired

@@ -4,7 +4,6 @@ import com.book.items.composite.ProductComposite;
 import com.book.pojo.ProductItem;
 import com.book.service.ProductItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

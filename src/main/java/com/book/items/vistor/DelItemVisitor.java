@@ -6,6 +6,9 @@ import com.book.utils.RedisCommonProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * 商品类目删除访问者
+ */
 @Component
 public class DelItemVisitor implements ItemVisitor<AbstractProductItem>{
     @Autowired

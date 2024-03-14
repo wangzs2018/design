@@ -45,6 +45,11 @@ public class ProductItemService {
         return items;
     }
 
+    /**
+     * 将数据库的商品类目信息转换成组合模式树形结构
+     * @param fetchDbItems 数据库的商品类目信息
+     * @return 组合模式树形结构
+     */
     private ProductComposite generateProductTree(List<ProductItem> fetchDbItems) {
         List<ProductComposite> composites = new ArrayList<>(fetchDbItems.size());
         fetchDbItems.forEach(dbItem -> composites.add(ProductComposite.builder()
