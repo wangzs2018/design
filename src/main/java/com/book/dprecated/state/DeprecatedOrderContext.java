@@ -17,22 +17,22 @@ public class DeprecatedOrderContext {
 
     public DeprecatedOrder createOrder(String orderId, String productId) {
         //创建订单，使用deprecatedCreateOrder
-        DeprecatedOrder order = deprecatedCreateOrder.createOrder(orderId, productId, this);
+        DeprecatedOrder order = deprecatedCreateOrder.createOrder(orderId, productId);
         return order;
     }
     public DeprecatedOrder payOrder(String orderId) {
         //支付订单，使用deprecatedPayOrder
-        DeprecatedOrder order = deprecatedPayOrder.payOrder(orderId, this);
+        DeprecatedOrder order = deprecatedPayOrder.payOrder(orderId);
         return order;
     }
     public DeprecatedOrder sendOrder(String orderId) {
         //订单发货，使用 deprecatedSendOrder
-        DeprecatedOrder order = deprecatedSendOrder.sendOrder(orderId, this);
+        DeprecatedOrder order = deprecatedSendOrder.sendOrder(orderId);
         return order;
     }
     public DeprecatedOrder receiveOrder(String orderId) {
         //订单签收，使用 deprecatedReceiveOrder
-        DeprecatedOrder order = deprecatedReceiveOrder.receiveOrder(orderId, this);
+        DeprecatedOrder order = deprecatedReceiveOrder.receiveOrder(orderId);
         return order;
     }
 }

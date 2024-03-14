@@ -9,11 +9,8 @@ public class DeprecatedSendOrder extends DeprecatedAbstractOrderState {
     //引入redis，存储订单
     @Autowired
     private RedisCommonProcessor redisCommonProcessor;
-    //订单发货后的下一个状态：待收货
-    @Autowired
-    private DeprecatedReceiveOrder deprecatedReceiveOrder;
     @Override
-    protected DeprecatedOrder sendOrder(String orderId, DeprecatedOrderContext context) {
+    protected DeprecatedOrder sendOrder(String orderId) {
         //从redis中取出当前订单，并判断当前订单状态是否为 待发货 状态
         DeprecatedOrder order = (DeprecatedOrder) redisCommonProcessor.get(orderId);
         if(!order.getState().equals(ORDER_WAIT_SEND)){

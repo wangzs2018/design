@@ -10,7 +10,7 @@ public class DeprecatedReceiveOrder extends DeprecatedAbstractOrderState {
     @Autowired
     private RedisCommonProcessor redisCommonProcessor;
     @Override
-    protected DeprecatedOrder receiveOrder(String orderId, DeprecatedOrderContext context) {
+    protected DeprecatedOrder receiveOrder(String orderId) {
         //从redis中取出当前订单，并判断当前订单状态是否为 待收付 状态
         DeprecatedOrder order = (DeprecatedOrder) redisCommonProcessor.get(orderId);
         if(!order.getState().equals(ORDER_WAIT_RECEIVE)){

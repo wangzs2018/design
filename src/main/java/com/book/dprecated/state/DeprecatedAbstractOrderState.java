@@ -6,28 +6,48 @@ import java.util.List;
 import java.util.Vector;
 
 public abstract class DeprecatedAbstractOrderState {
-    protected final String ORDER_WAIT_PAY = "ORDER_WAIT_PAY";
-    protected final String ORDER_WAIT_SEND = "ORDER_WAIT_SEND";
-    protected final String ORDER_WAIT_RECEIVE = "ORDER_WAIT_RECEIVE";
-    protected final String ORDER_FINISH = "ORDER_FINISH";
+    protected final String ORDER_WAIT_PAY = "ORDER_WAIT_PAY"; // 待支付
+    protected final String ORDER_WAIT_SEND = "ORDER_WAIT_SEND"; // 待发货
+    protected final String ORDER_WAIT_RECEIVE = "ORDER_WAIT_RECEIVE"; // 待收付
+    protected final String ORDER_FINISH = "ORDER_FINISH"; // 订单完成
 
     protected final List<DeprecatedAbstractObserver> observersList = DeprecatedConstants.OBSERVER_LIST;
 
 
-    //创建订单
-    protected DeprecatedOrder createOrder(String orderId, String productId, DeprecatedOrderContext context) {
+    /**
+     * 创建订单
+     * @param orderId
+     * @param productId
+     * @return
+     */
+    protected DeprecatedOrder createOrder(String orderId, String productId) {
         throw new UnsupportedOperationException();
     }
-    //订单支付
-    protected DeprecatedOrder payOrder(String orderId, DeprecatedOrderContext context) {
+
+    /**
+     * 订单支付
+     * @param orderId
+     * @return
+     */
+    protected DeprecatedOrder payOrder(String orderId) {
         throw new UnsupportedOperationException();
     }
-    //订单发送
-    protected DeprecatedOrder sendOrder(String orderId, DeprecatedOrderContext context) {
+
+    /**
+     * 订单发送
+     * @param orderId
+     * @return
+     */
+    protected DeprecatedOrder sendOrder(String orderId) {
         throw new UnsupportedOperationException();
     }
-    //订单签收
-    protected DeprecatedOrder receiveOrder(String orderId, DeprecatedOrderContext context) {
+
+    /**
+     * 订单签收
+     * @param orderId
+     * @return
+     */
+    protected DeprecatedOrder receiveOrder(String orderId) {
         throw new UnsupportedOperationException();
     }
 
@@ -35,13 +55,5 @@ public abstract class DeprecatedAbstractOrderState {
         for(DeprecatedAbstractObserver observer : this.observersList) {
             observer.orderStateHandle(orderId, orderState);
         }
-    }
-
-    public void addObserver(DeprecatedAbstractObserver observer){
-        this.observersList.add(observer);
-    }
-
-    public void removeObserver(DeprecatedAbstractObserver observer) {
-        this.observersList.remove(observer);
     }
 }

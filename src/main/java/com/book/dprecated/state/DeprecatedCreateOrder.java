@@ -9,12 +9,9 @@ public class DeprecatedCreateOrder extends DeprecatedAbstractOrderState {
     //引入redis，将新生成的订单存放到 redis
     @Autowired
     private RedisCommonProcessor redisCommonProcessor;
-    //订单创建完成后的下一个状态：待支付
-    @Autowired
-    private DeprecatedPayOrder deprecatedPayOrder;
 
     @Override
-    protected DeprecatedOrder createOrder(String orderId, String productId, DeprecatedOrderContext context) {
+    protected DeprecatedOrder createOrder(String orderId, String productId) {
         //创建订单对象，设置状态为 ORDER_WAIT_PAY
         DeprecatedOrder order = DeprecatedOrder.builder()
                 .orderId(orderId)

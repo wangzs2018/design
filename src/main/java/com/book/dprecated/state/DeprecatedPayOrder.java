@@ -9,11 +9,8 @@ public class DeprecatedPayOrder extends DeprecatedAbstractOrderState {
     //引入redis，存储订单
     @Autowired
     private RedisCommonProcessor redisCommonProcessor;
-    //订单支付完成后的下一个状态：待发货
-    @Autowired
-    private DeprecatedSendOrder deprecatedSendOrder;
     @Override
-    protected DeprecatedOrder payOrder(String orderId, DeprecatedOrderContext context) {
+    protected DeprecatedOrder payOrder(String orderId) {
         //从redis中取出当前订单，并判断当前订单状态是否为 待支付 状态
         DeprecatedOrder order = (DeprecatedOrder) redisCommonProcessor.get(orderId);
         if(!order.getState().equals(ORDER_WAIT_PAY)){
