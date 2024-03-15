@@ -23,37 +23,35 @@ import java.util.HashMap;
 @EnableStateMachine(name="orderStateMachine")
 public class OrderStateMachineConfig extends StateMachineConfigurerAdapter<OrderState, OrderStateChangeAction> {
     @Autowired
-    private RedisCommonProcessor redisCommonProcessor;
-
-    @Autowired
     private RedisConnectionFactory redisConnectionFactory;
 
-    private final HashMap<String, StateMachineContext> map = new HashMap<>();
     public void configure(StateMachineStateConfigurer<OrderState, OrderStateChangeAction> states) throws Exception {
         states.withStates().initial(OrderState.ORDER_WAIT_PAY)
         .states(EnumSet.allOf(OrderState.class));
     }
 
     public void configure(StateMachineTransitionConfigurer<OrderState, OrderStateChangeAction> transitions) throws Exception {
-        transitions.withExternal().source(OrderState.ORDER_WAIT_PAY)
+        transitions.withExternal()
+                .source(OrderState.ORDER_WAIT_PAY)
+
                 .target(OrderState.ORDER_WAIT_SEND)
                 .event(OrderStateChangeAction.PAY_ORDER)
                 .and()
                 .withExternal().source(OrderState.ORDER_WAIT_SEND)
+
                 .target(OrderState.ORDER_WAIT_RECEIVE)
                 .event(OrderStateChangeAction.SEND_ORDER)
                 .and()
                 .withExternal().source(OrderState.ORDER_WAIT_RECEIVE)
+
                 .target(OrderState.ORDER_FINISH)
                 .event(OrderStateChangeAction.RECEIVE_ORDER);
     }
 
     @Bean(name = "stateMachineRedisPersister")
     public RedisStateMachinePersister<OrderState, OrderStateChangeAction> getRedisPersister() {
-        RedisStateMachineContextRepository<OrderState, OrderStateChangeAction> repository
-                = new RedisStateMachineContextRepository<>(redisConnectionFactory);
-        RepositoryStateMachinePersist p
-                = new RepositoryStateMachinePersist<>(repository);
+        RedisStateMachineContextRepository<OrderState, OrderStateChangeAction> repository = new RedisStateMachineContextRepository<>(redisConnectionFactory);
+        RepositoryStateMachinePersist p = new RepositoryStateMachinePersist<>(repository);
         return new RedisStateMachinePersister<>(p);
     }
 }
