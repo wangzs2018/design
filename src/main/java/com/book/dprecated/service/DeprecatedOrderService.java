@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class DeprecatedOrderService {
 
+    // 从实战角度,直接使用状态模式的通用UML类图,会导致@Service逻辑层形同虚设
+    // DeprecatedOrderService和DeprecatedOrderContext的代码及其相似
     @Autowired
     private DeprecatedOrderContext orderContext;
 

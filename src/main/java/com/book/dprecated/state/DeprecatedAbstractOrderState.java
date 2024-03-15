@@ -8,7 +8,7 @@ import java.util.Vector;
 public abstract class DeprecatedAbstractOrderState {
     protected final String ORDER_WAIT_PAY = "ORDER_WAIT_PAY"; // 待支付
     protected final String ORDER_WAIT_SEND = "ORDER_WAIT_SEND"; // 待发货
-    protected final String ORDER_WAIT_RECEIVE = "ORDER_WAIT_RECEIVE"; // 待收付
+    protected final String ORDER_WAIT_RECEIVE = "ORDER_WAIT_RECEIVE"; // 待收货
     protected final String ORDER_FINISH = "ORDER_FINISH"; // 订单完成
 
     protected final List<DeprecatedAbstractObserver> observersList = DeprecatedConstants.OBSERVER_LIST;
