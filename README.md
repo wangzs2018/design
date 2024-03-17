@@ -14,7 +14,9 @@ com.book.items.vistor.ItemVisitor.java
 
 ### 第4章 商品订单状态转化与处理 状态模式,观察者模式,命令模式
 废弃  com.book.dprecated.controller.DeprecatedOrderController.java
-推荐  com/book/ordermanagement
+推荐  com.book.controller.OrderController
+com/book/ordermanagement
+
 
 ### 第5章 多种类第三方支付 策略模式,门面模式,工厂模式,享元模式
 com/book/pay
