@@ -35,8 +35,7 @@ public class OrderStateListener {
         order.setOrderState(OrderState.ORDER_WAIT_SEND);
         redisCommonProcessor.set(order.getOrderId(), order);
         //命令模式进行相关处理（本章4.10节和4.11节进行实现）
-        OrderCommandInvoker invoker = new OrderCommandInvoker();
-        invoker.invoke(orderCommand, order);
+        new OrderCommandInvoker().invoke(orderCommand, order);
         return true;
     }
     @OnTransition(source = "ORDER_WAIT_SEND", target = "ORDER_WAIT_RECEIVE")

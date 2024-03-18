@@ -31,19 +31,21 @@ public class OrderStateMachineConfig extends StateMachineConfigurerAdapter<Order
     }
 
     public void configure(StateMachineTransitionConfigurer<OrderState, OrderStateChangeAction> transitions) throws Exception {
-        transitions.withExternal()
+        transitions
+                .withExternal()
                 .source(OrderState.ORDER_WAIT_PAY)
-
                 .target(OrderState.ORDER_WAIT_SEND)
                 .event(OrderStateChangeAction.PAY_ORDER)
                 .and()
-                .withExternal().source(OrderState.ORDER_WAIT_SEND)
 
+                .withExternal()
+                .source(OrderState.ORDER_WAIT_SEND)
                 .target(OrderState.ORDER_WAIT_RECEIVE)
                 .event(OrderStateChangeAction.SEND_ORDER)
                 .and()
-                .withExternal().source(OrderState.ORDER_WAIT_RECEIVE)
 
+                .withExternal()
+                .source(OrderState.ORDER_WAIT_RECEIVE)
                 .target(OrderState.ORDER_FINISH)
                 .event(OrderStateChangeAction.RECEIVE_ORDER);
     }
