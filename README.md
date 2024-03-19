@@ -16,13 +16,15 @@ com.book.items.vistor.ItemVisitor.java
 废弃  com.book.dprecated.controller.DeprecatedOrderController.java
 推荐  com.book.controller.OrderController
 com/book/ordermanagement
-
+2024年3月18日  完成
 
 ### 第5章 多种类第三方支付 策略模式,门面模式,工厂模式,享元模式
 com/book/pay
+2024年3月18日  完成
 
 ### 第6章 业务投放 责任链模式
 com/book/dutychain
+
 
 ### 第7章 平台积分更新及红包发放 装饰器模式
 com/book/service/decorator

@@ -3,6 +3,10 @@ package com.book.ordermanagement.command.receiver;
 import com.book.pojo.Order;
 import org.springframework.stereotype.Component;
 
+/**
+ * 命令接收者/命令实际的执行者
+ * 遵守单一职责原则,可以根据需求创建多个Receiver
+ */
 @Component
 public class OrderCommandReceiver {
     public void action(Order order){

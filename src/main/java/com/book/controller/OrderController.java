@@ -44,6 +44,13 @@ public class OrderController {
         return orderService.createOrder(productId);
     }
 
+    /**
+     * 支付订单
+     * @param orderId 订单id
+     * @param price 订单价格
+     * @param payType 1:支付宝支付 2:微信支付
+     * @return
+     */
     @PostMapping("/pay")
     public String payOrder(@RequestParam String orderId,
                            @RequestParam Float price,
@@ -62,6 +69,14 @@ public class OrderController {
         return orderService.receive(orderId);
     }
 
+    /**
+     * 支付宝回调
+     * @param request
+     * @return
+     * @throws AlipayApiException
+     * @throws UnsupportedEncodingException
+     * @throws UnsupportedEncodingException
+     */
     @RequestMapping("/alipaycallback")
     public String alipayCallback(HttpServletRequest request) throws AlipayApiException, UnsupportedEncodingException, UnsupportedEncodingException {
         // 获取回调信息

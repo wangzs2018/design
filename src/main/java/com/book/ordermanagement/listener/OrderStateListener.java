@@ -57,7 +57,10 @@ public class OrderStateListener {
             throw new UnsupportedOperationException("Order state error!");
         }
         order.setOrderState(OrderState.ORDER_FINISH);
+        // 删除订单信息
         redisCommonProcessor.remove(order.getOrderId());
+        // 删除状态机信息
+        redisCommonProcessor.remove(order.getOrderId()+"STATE");
         new OrderCommandInvoker().invoke(orderCommand, order);
         //命令模式进行相关处理（本章4.10节和4.11节进行实现）
         return true;
