@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
+/**
+ * 业务投放
+ */
 @Data
 @Entity
 @Table(name = "business_launch")

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * 具体工厂类,支付工厂类
+ */
 @Component
 public class PayContextFactory extends  AbstractPayContextFactory<PayContext> {
     //创建Map数据结构作为缓存 存储PayContext
