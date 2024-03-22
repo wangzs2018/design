@@ -20,10 +20,10 @@ public class EnumUtils {
      */
     public synchronized static <T extends MyEnum> T getEnumByCode(String code, Class<T> enumClass) {
         Optional<T> enumOptional = Stream.of(enumClass.getEnumConstants()).filter(item -> item.code().equals(code)).findAny();
-        if (!enumOptional.isPresent()) {
-            log.info(String.format(MESSAGE, enumClass.getName(), code));
-            throw new RuntimeException(String.format(MESSAGE, enumClass.getName(), code));
+        if(enumOptional.isPresent()) {
+            return enumOptional.get();
         }
-        return enumOptional.get();
+        log.info(String.format(MESSAGE, enumClass.getName(), code));
+        throw new UnsupportedOperationException(String.format(MESSAGE, enumClass.getName(), code));
     }
 }
