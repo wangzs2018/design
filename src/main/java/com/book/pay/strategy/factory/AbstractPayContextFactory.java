@@ -7,5 +7,5 @@ package com.book.pay.strategy.factory;
  * @param <T>
  */
 public abstract class AbstractPayContextFactory<T> {
-    public abstract T getContext(Integer payType);
+    public abstract T getContext(String payType);
 }

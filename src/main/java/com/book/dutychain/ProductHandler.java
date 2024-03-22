@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 按用户购物种类的筛选责任类
+ */
 public class ProductHandler extends AbstractBusinessHandler{
 
     @Override

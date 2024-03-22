@@ -3,10 +3,19 @@ package com.book.pay.strategy;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.book.pay.strategy.factory.MyEnum;
+import com.book.pay.strategy.factory.PayTypeEnum;
 import com.book.pojo.Order;
 import com.book.utils.Constants;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AlipayStrategy implements PayStrategyInterface{
+    @Override
+    public boolean match(MyEnum myEnum) {
+        return myEnum == PayTypeEnum.ALIPAY;
+    }
+
     @Override
     public String pay(Order order) {
         //创建 Alipay client

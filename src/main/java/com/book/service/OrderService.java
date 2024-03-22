@@ -44,10 +44,6 @@ public class OrderService implements OrderServiceInterface {
 
     @Autowired
     private CreateOrderLog createOrderLog;
-    @Autowired
-    private SendOrderLog sendOrderLog;
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
 
     //订单创建
     public Order createOrder(String productId) {
@@ -126,7 +122,7 @@ public class OrderService implements OrderServiceInterface {
         return false;
     }
 
-    public String getPayUrl(String orderId, Float price, Integer payType) {
+    public String getPayUrl(String orderId, Float price, String payType) {
         Order order = (Order) redisCommonProcessor.get(orderId);
         order.setPrice(price);
         return payFacade.pay(order, payType);

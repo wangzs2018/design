@@ -54,7 +54,7 @@ public class OrderController {
     @PostMapping("/pay")
     public String payOrder(@RequestParam String orderId,
                            @RequestParam Float price,
-                           @RequestParam Integer payType
+                           @RequestParam String payType
     ){
         return orderService.getPayUrl(orderId, price, payType);
     }

@@ -28,7 +28,7 @@ public abstract class AbstractOderServiceDecorator implements OrderServiceInterf
     }
     //覆写 getPayUrl 方法,但不改变方法逻辑，直接调用orderServiceInterface的 getPayUrl 方法
     @Override
-    public String getPayUrl(String orderId, Float price, Integer payType) {
+    public String getPayUrl(String orderId, Float price, String payType) {
         return this.orderServiceInterface.getPayUrl(orderId,price,payType);
     }
     //覆写pay方法,但不改变方法逻辑，直接调用orderServiceInterface的pay方法

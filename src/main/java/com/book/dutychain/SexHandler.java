@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 按用户购物性别的筛选责任类
+ */
 public class SexHandler extends AbstractBusinessHandler{
 
     @Override

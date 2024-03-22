@@ -7,5 +7,5 @@ public interface OrderServiceInterface {
     Order pay(String orderId);
     Order send(String orderId);
     Order receive(String orderId);
-    String getPayUrl(String orderId, Float price, Integer payType);
+    String getPayUrl(String orderId, Float price, String payType);
 }

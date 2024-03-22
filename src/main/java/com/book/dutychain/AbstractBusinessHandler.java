@@ -4,6 +4,9 @@ import com.book.pojo.BusinessLaunch;
 
 import java.util.List;
 
+/**
+ * 抽象责任类
+ */
 public abstract class AbstractBusinessHandler {
     //定义 下一个责任类
     public AbstractBusinessHandler nextHandler;
