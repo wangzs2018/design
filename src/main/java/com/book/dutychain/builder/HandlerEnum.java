@@ -6,7 +6,7 @@ public enum  HandlerEnum {
     //业务投放性别群体
     sex("com.book.dutychain.SexHandler"),
     //业务投放相关产品
-    product("com.book.dutychain.ProductsHandler");
+    product("com.book.dutychain.ProductHandler");
     String value = "";
     HandlerEnum(String value) {
         this.value = value;

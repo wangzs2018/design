@@ -2,6 +2,7 @@ package com.book.service;
 
 import com.book.dutychain.AbstractBusinessHandler;
 import com.book.dutychain.CityHandler;
+import com.book.dutychain.LaunchTarget;
 import com.book.dutychain.builder.BusinessChainBuilder;
 import com.book.dutychain.builder.HandlerEnum;
 import com.book.pojo.BusinessLaunch;
@@ -9,6 +10,7 @@ import com.book.pojo.UserInfo;
 import com.book.repo.BusinessLaunchRepository;
 import com.book.repo.UserRepository;
 import com.book.ticket.proxy.DirectorProxy;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 @Service
 public class UserService {
     @Autowired
@@ -61,9 +64,10 @@ public class UserService {
         return true;
     }
 
-    public List<BusinessLaunch> filterBusinessLaunch(String city, String sex, String product) {
+    public List<BusinessLaunch> filterBusinessLaunch(LaunchTarget launchTarget) {
         List<BusinessLaunch> launchList = businessLaunchRepository.findAll();
-        return buildChain().processHandler(launchList, city, sex, product);
+        log.info("原始业务投放数据：{}", launchList);
+        return buildChain().processHandler(launchList, launchTarget);
     }
     //组装责任链条并返回责任链条首节点
     private AbstractBusinessHandler buildChain() {

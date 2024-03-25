@@ -1,6 +1,7 @@
 package com.book.controller;
 
 import com.book.adapter.Login3rdAdapter;
+import com.book.dutychain.LaunchTarget;
 import com.book.pojo.BusinessLaunch;
 import com.book.pojo.UserInfo;
 import com.book.service.UserService;
@@ -40,10 +41,8 @@ public class UserController {
     }
 
     @PostMapping("/business/launch")
-    public List<BusinessLaunch> filterBusinessLaunch(@RequestParam("city") String city,
-                                                     @RequestParam("sex") String sex,
-                                                     @RequestParam("product") String product) {
-        return userService.filterBusinessLaunch(city, sex, product);
+    public List<BusinessLaunch> filterBusinessLaunch(@RequestBody LaunchTarget launchTarget) {
+        return userService.filterBusinessLaunch(launchTarget);
     }
     @PostMapping("/ticket")
     public Object createTicket(String type, String productId, String content, String title, String bankInfo, String taxId) {

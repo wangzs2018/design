@@ -14,6 +14,12 @@ public abstract class AbstractBusinessHandler {
     public boolean hasNextHandler() {
         return this.nextHandler != null;
     }
-    //定义抽象责任类方法
-    public abstract List<BusinessLaunch> processHandler(List<BusinessLaunch> launchList, String targetCity, String targetSex, String targetProduct);
+
+    /**
+     * 定义抽象责任类方法
+     * @param launchList 投放业务
+     * @param launchTarget 投放目标
+     * @return  投放业务
+     */
+    public abstract List<BusinessLaunch> processHandler(List<BusinessLaunch> launchList, LaunchTarget launchTarget);
 }
