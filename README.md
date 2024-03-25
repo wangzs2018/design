@@ -25,7 +25,7 @@ com/book/pay
 ### 第6章 业务投放 责任链模式
 API: /business/launch
 com/book/dutychain
-
+2024年3月25日 完成
 
 ### 第7章 平台积分更新及红包发放 装饰器模式
 com/book/service/decorator
