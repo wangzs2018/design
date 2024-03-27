@@ -116,5 +116,4 @@ public class UserService {
         return directorProxy.buildTicket(type, productId, content, title, bankInfo, taxId);
     }
 
-
 }

@@ -6,6 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+
+/**
+ * 订单审计日志
+ */
 @Data
 @Builder
 @NoArgsConstructor

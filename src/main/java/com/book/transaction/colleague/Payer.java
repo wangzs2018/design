@@ -2,6 +2,9 @@ package com.book.transaction.colleague;
 
 import com.book.transaction.mediator.AbstractMediator;
 
+/**
+ * 待支付者
+ */
 public class Payer extends AbstractCustomer{
 
     public Payer(String orderId, AbstractMediator mediator, String customerName) {

@@ -36,6 +36,12 @@ public abstract class AbstractOderServiceDecorator implements OrderServiceInterf
     public Order pay(String orderId) {
         return this.orderServiceInterface.pay(orderId);
     }
-    //定义新的方法，根据userId和productId更新用户积分、发放红包
+
+    /**
+     * 定义新的方法，根据userId和productId更新用户积分、发放红包
+     * @param productId 商品id
+     * @param serviceLevel  服务等级
+     * @param price 商品价格
+     */
     protected abstract void updateScoreAndSendRedPaper(String productId, int serviceLevel, float price);
 }

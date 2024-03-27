@@ -22,7 +22,32 @@ public class OrderServiceDecorator extends AbstractOderServiceDecorator{
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    //覆写 OrderServiceDecorator 中的抽象方法，具体实现积分更新和红包发放
+
+    /**
+     * 将pay方法与updateScoreAndSendRedPaper方法进行逻辑结合
+     * @param orderId   订单id
+     * @param serviceLevel  服务等级
+     * @param price 商品价格
+     * @return
+     */
+    public Order decoratorPay(String orderId, int serviceLevel, float price) {
+        //调用原有 OrderService 的逻辑
+        Order order = super.pay(orderId);
+        //新的逻辑，更新积分、发放用户红包
+        try {
+            this.updateScoreAndSendRedPaper(order.getProductId(), serviceLevel, price);
+        } catch (Exception e) {
+            //重试机制。此处积分更新不能影响 支付主流程
+        }
+        return order;
+    }
+
+    /**
+     * 覆写 OrderServiceDecorator 中的抽象方法，具体实现积分更新和红包发放
+     * @param productId 商品id
+     * @param serviceLevel  服务等级
+     * @param price 商品价格
+     */
     @Override
     protected void updateScoreAndSendRedPaper(String productId, int serviceLevel, float price) {
         switch (serviceLevel) {
@@ -53,16 +78,4 @@ public class OrderServiceDecorator extends AbstractOderServiceDecorator{
         }
     }
 
-    //将pay方法与updateScoreAndSendRedPaper方法进行逻辑结合
-    public Order decoratorPay(String orderId, int serviceLevel, float price) {
-        //调用原有 OrderService 的逻辑
-        Order order = super.pay(orderId);
-        //新的逻辑，更新积分、发放用户红包
-        try {
-            this.updateScoreAndSendRedPaper(order.getProductId(), serviceLevel, price);
-        } catch (Exception e) {
-            //重试机制。此处积分更新不能影响 支付主流程
-        }
-        return order;
-    }
 }
